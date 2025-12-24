@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import AllowAny
 from .models import RawInput, ProcessedEntry
 from .services.classifier import classify_text
 from .serializers import ProcessedEntrySerializer
@@ -20,6 +22,8 @@ def api_root(request):
 
 # Accept Raw Input at POST/api/input 
 class InputView(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
     def post(self, request):
         text = request.data.get('text')
 
