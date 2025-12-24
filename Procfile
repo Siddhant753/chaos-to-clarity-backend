@@ -1,0 +1,1 @@
+web: gunicorn chaos_backend.wsgi
