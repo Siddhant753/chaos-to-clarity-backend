@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 from decouple import config
 
-DEBUG = config('DEBUG', default=True, cast=bool)
-SECRET_KEY = config('SECRET_KEY')
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -125,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CROS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = [
     "GET",
@@ -133,6 +130,7 @@ CORS_ALLOW_METHODS = [
     "OPTIONS",
 ]
 
+CORS_ALLOW_CREDENTIALS = False
 CORS_ALLOW_HEADERS = [
     "accept",
     "authorization",
